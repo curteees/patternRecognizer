@@ -8,6 +8,8 @@ python getChartData.py [TICKER]
 - only does one ticker at a time right now
 - could probably modify to pass in a list of tickers we want data for
 
-patternRecognizer.py
+How to get patterns from data, run this in your terminal:
+python patternRecognizer.py [TICKER]
 - work in progress
 - read data from CSV and identify candlestick patterns
+- only have Bullish engulfing and doji rn
