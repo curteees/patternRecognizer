@@ -2,6 +2,7 @@ import sys
 import urllib
 
 ticker = sys.argv[1]
+# create an array or csv with list of tickers and use a loop to get a bunch of data
 print("Ticker = " + ticker)
 
 def make_filename(ticker):

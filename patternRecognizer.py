@@ -5,6 +5,7 @@ import csv
 print("Hello")
 
 # probably should add a check for valid ticker
+# to run: python patternRecognizer.py [ticker]
 ticker = sys.argv[1]
 print("Ticker = " + ticker)
 
