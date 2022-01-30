@@ -6,7 +6,15 @@ print("Hello")
 
 # probably should add a check for valid ticker
 # to run: python patternRecognizer.py [ticker]
-ticker = sys.argv[1]
+# ticker = sys.argv[1]
+
+try:
+    ticker = sys.argv[1]
+    print("Ticker = " + ticker)
+except:
+    print("ERROR: Enter a ticker after 'python patternRecognizer.py [tickerhere]'")
+
+
 print("Ticker = " + ticker)
 
 def print_csv(ticker):
@@ -50,6 +58,16 @@ def is_doji(candles, index):
 def is_three_line_strike(candles, index):
     current_day = candles[index]
     previous_day = candles[index - 1]
+    previous_day2 = candles[index - 2]
+    previous_day3 = candles[index - 3]
+    for i in range(1, 4):
+        if current_day['Open'] < previous_day['Close'] \
+            and is_bearish_candlestick(previous_day) \
+            and is_bearish_candlestick(previous_day2) \
+            and is_bearish_candlestick(previous_day3):
+            return True
+    
+
 
 def find_patterns(ticker):
     with open("Data/" + ticker + ".csv") as f:
@@ -64,6 +82,9 @@ def find_patterns(ticker):
                 
             elif is_doji(candles, i):
                 print("{} Doji".format(candles[i]['Date']))
+            
+            elif is_three_line_strike(candles, i):
+                print("{} Three Line Strike".format(candles[i]['Date']))
 
 find_patterns(ticker)
 
