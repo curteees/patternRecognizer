@@ -18,13 +18,18 @@ python patternRecognizer.py [TICKER]
 
 Make sure you have pipenv: `pip install pipenv`.
 
+Need Flask too: `pip install flask`.
+
 To activate this project's virtualenv, run `pipenv shell`.
 
 Inside of the shell, run `python server.py`.
 
 # TODOS:
 
-- Read data from CSV and identify candlestick patterns, only has bullish engulfing and doji
+- Data collection
+  - make list of S&P 500 Tickers
+  - modify getChartData.py to loop through list and get all recent data from those companies
+- Add more candlestick patterns to recognizer
 - Create REST API endpoints. Should be returned in JSON format
   - _GET_ stock data for a ticker.
   - _GET_ run pattern for a ticker.
