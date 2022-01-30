@@ -15,8 +15,13 @@ def print_csv(ticker):
         for row in reader:
             print(row)
 
+# Bearish is a red candlestick, price went down
 def is_bearish_candlestick(candle):
     return candle['Close'] < candle['Open']
+
+# Bullish is a green candlestick, price went up
+def is_bullish_candlestick(candle):
+    return candle['Close'] > candle['Open']
 
 def is_bullish_engulfing(candles, index):
     current_day = candles[index]
@@ -24,7 +29,7 @@ def is_bullish_engulfing(candles, index):
     
     if is_bearish_candlestick(previous_day) \
         and current_day['Close'] > previous_day['Open'] \
-        and current_day['Open'] < previous_day['Close']:
+        and current_day['Open'] < previous_day['Close']:    # the \ backslash allows you to continue the logical line in the next line
         return True
 
 #doji function works but might need to set a doji range
@@ -41,6 +46,10 @@ def is_doji(candles, index):
 #     if current_day['Close'] == current_day['Open']:
     if (float(current_day['Open']) * 0.995) <= float(current_day['Close']) <= (float(current_day['Open']) * 1.005):
         return True
+
+def is_three_line_strike(candles, index):
+    current_day = candles[index]
+    previous_day = candles[index - 1]
 
 def find_patterns(ticker):
     with open("Data/" + ticker + ".csv") as f:
