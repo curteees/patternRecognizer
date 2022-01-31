@@ -24,7 +24,7 @@ def make_url(ticker):
 def pull_historical_data(ticker):
     try:
         urllib.request.urlretrieve(make_url(ticker), make_filename(ticker))
-    except urllib.ContentTooShortError as e:
+    except urllib.request.ContentTooShortError as e:
         outfile = open(make_filename(ticker), "w")
         outfile.write(e.content)
         outfile.close()
