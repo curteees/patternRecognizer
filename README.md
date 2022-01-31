@@ -1,18 +1,21 @@
-# Patterns
+# Welcome to Doji
 
 Place for me to store my algorithms for detecting stock patterns
 
 open anaconda prompt
 activate doji for python 3.8
 
-How to get recent chart data, run this in your terminal:
+# Data Collection
+
+Requires requests to check if urls are good: `pip install requests`
+
+To get recent chart data, run this in your terminal:
 - python getChartData.py
 - this will get all S&P 500 companies chart data
 - there is an existing function in the file to specify a single ticker symbol but you will have to call that function if  you want to use it
 - Maybe I'll code it so if you enter a Ticker it'll just do that one. too lazy now
 
-- only does one ticker at a time right now
-- could probably modify to pass in a list of tickers we want data for
+# Patterns
 
 How to get patterns from data, run this in your terminal:
 python patternRecognizer.py [TICKER]
