@@ -70,7 +70,7 @@ def is_three_line_strike(candles, index):
 
 
 def find_patterns(ticker):
-    with open("Data/" + ticker + ".csv") as f:
+    with open("Data/Ticker/" + ticker + ".csv") as f:
         reader = csv.DictReader(f)
         candles = list(reader)
         

@@ -9,6 +9,8 @@ activate doji for python 3.8
 
 Requires requests to check if urls are good: `pip install requests`
 
+Add a folder named "Tickers" inside Data/
+
 To get recent chart data, run this in your terminal:
 - python getChartData.py
 - this will get all S&P 500 companies chart data
@@ -18,7 +20,7 @@ To get recent chart data, run this in your terminal:
 # Patterns
 
 How to get patterns from data, run this in your terminal:
-python patternRecognizer.py [TICKER]
+`python patternRecognizer.py [TICKER]`
 
 # Server
 

@@ -33,7 +33,7 @@ def pull_historical_data(ticker):
 
 
 def print_csv(ticker):
-    with open("Data/" + ticker + ".csv") as f:
+    with open("Data/Tickers/" + ticker + ".csv") as f:
         reader = csv.reader(f)
         for row in reader:
             print(row)
