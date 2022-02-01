@@ -18,10 +18,19 @@ except:
 print("Ticker = " + ticker)
 
 def print_csv(ticker):
-    with open("Data/" + ticker + ".csv") as f:
+    with open("Data/Tickers/" + ticker + ".csv") as f:
         reader = csv.reader(f)
         for row in reader:
             print(row)
+
+# Hammer, indicates lots of selling but also a lot of buyback to push closing price up
+def is_hammer(candle):
+    body = candle['Open'] - candle['Close']
+    wick = candle['High'] - candle['Low']
+    if (body > 0 and candle['Open'] == candle['Low'] and candle['Close'] == candle['High']):
+        ratio = body/wick
+        if (ratio <= 0.2):
+            return True
 
 # Bearish is a red candlestick, price went down
 def is_bearish_candlestick(candle):
@@ -40,12 +49,12 @@ def is_bullish_engulfing(candles, index):
         and current_day['Open'] < previous_day['Close']:    # the \ backslash allows you to continue the logical line in the next line
         return True
 
-#doji function works but might need to set a doji range
-#doji's are not always perfect 
-#maybe a +/- 0.5% range can be considered a doji
-#10000 <= number <= 30000
+# doji function works but might need to set a doji range
+# doji's are not always perfect 
+# maybe a +/- 0.5% range can be considered a doji
+# 10000 <= number <= 30000
 
-#...wait percentage doesnt work too well
+# ...wait percentage doesnt work too well
 # each chart has their own relative scale
 def is_doji(candles, index):
     current_day = candles[index]
@@ -70,7 +79,7 @@ def is_three_line_strike(candles, index):
 
 
 def find_patterns(ticker):
-    with open("Data/Ticker/" + ticker + ".csv") as f:
+    with open("Data/Tickers/" + ticker + ".csv") as f:
         reader = csv.DictReader(f)
         candles = list(reader)
         
